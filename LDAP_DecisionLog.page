@@ -1,0 +1,38 @@
+<apex:page standardController="LDAP_Decision_Log__c" extensions="LDAP_DecisionLogExtension">
+    <!--<apex:detail />-->
+    <apex:pageMessages />
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockButtons >
+                <apex:commandButton action="{!Save}" value="Save"/>
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Decision Log">
+                <apex:repeat value="{!$ObjectType.LDAP_Decision_Log__c.FieldSets.LDAP_DecisionLog}" var="field"> 
+                    <apex:inputField value="{!LDAP_Decision_Log__c[field]}" /> 
+                </apex:repeat> 
+                
+            </apex:pageBlockSection>
+            
+            <apex:pageBlockSection title="Other Information">
+                
+            	<apex:outputField value="{!LDAP_Decision_Log__c.RecordTypeId}"/>
+                <apex:outputField value="{!LDAP_Decision_Log__c.BAM_Entry__c}" rendered="{!IF(rtName == 'BAM Entry', true, false)}"/>
+                <apex:outputField value="{!LDAP_Decision_Log__c.Lab_Vendor__c}" rendered="{!IF(rtName == 'Lab Vendor', true, false)}"/>
+                <apex:outputField value="{!LDAP_Decision_Log__c.Lab_and_Diagnostic_Plan__c}" rendered="{!IF(rtName == 'Lab and Diagnostic Plan', true, false)}"/>
+                <apex:outputField value="{!LDAP_Decision_Log__c.Project__c}" rendered="{!IF(rtName == 'Project', true, false)}"/>
+                <apex:outputField value="{!LDAP_Decision_Log__c.Trial_Study__c}" rendered="{!IF(rtName == 'Trial', true, false)}"/>
+                <apex:outputField value="{!LDAP_Decision_Log__c.Trial_Purchase_Order__c }" rendered="{!IF(rtName == 'Trial Purchase Order', true, false)}"/>
+                
+                
+                
+            </apex:pageBlockSection>
+            
+            
+            
+        </apex:pageBlock>
+        
+    </apex:form>
+    
+    
+    
+</apex:page>
